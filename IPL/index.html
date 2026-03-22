@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Museum Booking</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #704d32, #52331b); /* Gradient background */
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content horizontally */
+            justify-content: center; /* Center the content vertically */
+            height: 100vh;
+        }
+
+        .admin-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 14px;
+            background-color: #d6beac;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .admin-button:hover {
+            background-color: #442b2b;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .option-btn {
+            width: 100px;
+            margin: 30px 10px;
+            padding: 15px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .option-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .museum-select {
+            margin-top: 30px;
+            font-size: 16px;
+        }
+
+        .museum-select select {
+            padding: 5px 10px; /* Smaller padding for the dropdown */
+            font-size: 14px; /* Smaller font size */
+            width: 200px; /* Smaller width for the dropdown */
+            text-align: center;
+        }
+
+        .home-image {
+            width: 100%; 
+            max-width: 600px; 
+            border-radius: 8px; 
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-image-container {
+            margin-bottom: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Admin Button on top-right -->
+    <div class="admin-button">
+        <a href="admin-login.html">Admin Login</a>
+    </div>
+
+    <div class="container">
+        <!-- Home Image -->
+        <div class="home-image-container">
+            <img src="cova museum.jpg" alt="Museum Image" class="home-image">
+        </div>
+
+        <h1>Welcome to Museum Booking</h1>
+
+        <!-- Museum Selection -->
+        <div class="museum-select">
+            <label for="museum-select" class="form-label">Choose a Museum to Visit:</label>
+            <select id="museum-select" class="form-select" onchange="selectMuseum()">
+                <option value="">Select Museum</option>
+                <option value="Museum A">Archaeological Museum</option>
+                <option value="Museum B">Museum of Science</option>
+                <option value="Museum C">Museum of Arts</option>
+            </select>
+        </div>
+
+        <!-- User Selection Button -->
+        <button class="option-btn" onclick="goToUserBooking()">Book</button>
+        
+    </div>
+
+    <script>
+        // Function to handle redirection to User Booking page
+        function goToUserBooking() {
+            const selectedMuseum = document.getElementById('museum-select').value;
+            if (selectedMuseum === "") {
+                alert("Please select a museum first.");
+            } else {
+                // Redirect to user booking page, passing the selected museum as a query param
+                window.location.href = `user-booking.html?museum=${selectedMuseum}`;
+            }
+        }
+
+        // Optionally, function to handle museum selection change
+        function selectMuseum() {
+            const selectedMuseum = document.getElementById('museum-select').value;
+            console.log('Selected Museum: ' + selectedMuseum); // Can be used for other purposes if needed
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
